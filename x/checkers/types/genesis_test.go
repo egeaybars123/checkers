@@ -7,6 +7,15 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+func TestGenesisState_InitialNextId(t *testing.T) {
+	require.EqualValues(t,
+		&types.GenesisState{
+			SystemInfo:     types.SystemInfo{uint64(1)},
+			StoredGameList: []types.StoredGame{},
+		},
+		types.DefaultGenesis(),
+	)
+}
 func TestGenesisState_Validate(t *testing.T) {
 	for _, tc := range []struct {
 		desc     string
